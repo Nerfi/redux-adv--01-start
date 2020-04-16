@@ -38,12 +38,26 @@ export const  subtract = (value) => {
 };
 
 
-
-export const  storedResult = (value) => {
-  return {
+//sync code
+export const saveResult = (result) => {
+    return {
     type: STORE_RESULT,
-    result: value
+    result: result
   }
+
+};
+
+//async code lesson 289, rewatch again !
+export const  storedResult = (value) => {
+  //we get dispatch thansk to thunk redux
+  return dispatch => {
+      setTimeout(() => {
+        dispatch(saveResult(value));
+
+       },2000);
+
+  }
+
 };
 
 
